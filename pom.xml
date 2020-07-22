@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.curriculeon</groupId>
-    <artifactId>default-method-interfaces</artifactId>
+    <artifactId>simple-arcade</artifactId>
     <version>1.0</version>
 
     <build>
