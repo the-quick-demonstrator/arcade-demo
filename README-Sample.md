@@ -1,15 +1,15 @@
 # Project Title
 
-* **Objective** - To create a product...
-* **Purpose** - To gain familiarity the following features...
-
-
-
-
-## Objective
-
-#### Part 1 - ...
-* Ensure that all test cases in `com.github.curriculeon` pass with 100% success rate. 
+* **Objective** - To create an arcade simulation
+* **Purpose** - To gain familiarity with general object orientation and design principles
+* **Description**
+    * Create an arcade simulation by extending or removing the pre-built implementation.
+    * It is advised that you create additional methods and classes to mediate any foreseen shortcomings of the prebuilt assets. 
+    * Enforce the following features in your system:
+        * Ensure a console-based interface is available to allow input from and output to the users
+        * Ensure the `Arcade` has a selection of at least 2 implementation of `GameInterface`.
+        * Ensure all implementation of `PlayerInterface` have reference to a `ArcadeAccount`
+        * Ensure there are at least 5 test cases for each game. 
 
 
 

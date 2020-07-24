@@ -2,19 +2,20 @@ package com.github.curriculeon;
 
 import com.github.curriculeon.arcade.ArcadeAccount;
 import com.github.curriculeon.arcade.ArcadeAccountManager;
-import com.github.curriculeon.arcade.Game;
-import com.github.curriculeon.arcade.Player;
+import com.github.curriculeon.arcade.GameInterface;
+import com.github.curriculeon.arcade.PlayerInterface;
 import com.github.curriculeon.arcade.numberguess.NumberGuessGame;
 import com.github.curriculeon.arcade.numberguess.NumberGuessPlayer;
 import com.github.curriculeon.arcade.slots.SlotsGame;
 import com.github.curriculeon.arcade.slots.SlotsPlayer;
+import com.github.curriculeon.utils.AnsiColor;
 import com.github.curriculeon.utils.IOConsole;
 
 /**
  * Created by leon on 7/21/2020.
  */
 public class ApplicationRunner implements Runnable {
-    private static final IOConsole console = new IOConsole();
+    private static final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
     @Override
     public void run() {
@@ -30,22 +31,25 @@ public class ApplicationRunner implements Runnable {
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     if (gameSelectionInput.equals("SLOTS")) {
-                        playSlots();
+                        play(new SlotsGame(), new SlotsPlayer());
                     } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                        playNumberGuess();
+                        play(new NumberGuessGame(), new NumberGuessPlayer());
                     } else {
+                        // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
                         throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
                     }
                 } else {
-                    String errorMessage = "[ %s ] is an invalid password for account [ %s ]";
+                    // TODO - implement better exception handling
+                    String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
                     throw new RuntimeException(String.format(errorMessage, accountPassword, accountName));
                 }
             } else if ("create-account".equals(arcadeDashBoardInput)) {
                 console.println("Welcome to the account-creation screen.");
                 String accountName = console.getStringInput("Enter your account name:");
                 String accountPassword = console.getStringInput("Enter your account password:");
-                arcadeAccountManager.createAccount(accountName, accountPassword);
+                ArcadeAccount newAccount = arcadeAccountManager.createAccount(accountName, accountPassword);
+                arcadeAccountManager.registerAccount(newAccount);
             }
         } while (!"logout".equals(arcadeDashBoardInput));
     }
@@ -66,16 +70,9 @@ public class ApplicationRunner implements Runnable {
                 .toString());
     }
 
-    private void playNumberGuess() {
-        Player player = new NumberGuessPlayer();
-        Game game = new NumberGuessGame();
-        game.add(player);
-        game.run();
-    }
-
-    private void playSlots() {
-        Player player = new SlotsPlayer();
-        Game game = new SlotsGame();
+    private void play(Object gameObject, Object playerObject) {
+        GameInterface game = (GameInterface)gameObject;
+        PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();
     }
