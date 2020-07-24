@@ -10,7 +10,7 @@ public class ApplicationRunnerTest {
     @Test
     public void test() { // TODO - replace boiler-plate logic with business logic
         // given
-        Runnable runnable = new ApplicationRunner();
+        Runnable runnable = new Arcade();
 
         // when
         runnable.run();

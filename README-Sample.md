@@ -1,4 +1,4 @@
-# Project Title
+# Arcade Simulation
 
 * **Objective** - To create an arcade simulation
 * **Purpose** - To gain familiarity with general object orientation and design principles
