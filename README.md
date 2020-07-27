@@ -3,6 +3,8 @@
 * **Objective** - To create an arcade simulation
 * **Purpose** - To gain familiarity with general object orientation and design principles
 * **Description**
+    * View the [javadocs](https://curriculeon.github.io/maven.simple-arcade/javadocs/index.html) for the program to become better oriented with its design
+      * `https://curriculeon.github.io/maven.simple-arcade/javadocs/index.html`
     * Create an arcade simulation by extending or removing the pre-built implementation.
     * It is advised that you create additional methods and classes to mediate any foreseen shortcomings of the prebuilt assets. 
     * Enforce the following features in your system:
