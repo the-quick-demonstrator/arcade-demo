@@ -3,8 +3,6 @@
 * **Objective** - To create an arcade simulation
 * **Purpose** - To gain familiarity with general object orientation and design principles
 
-<img src="./arcade.gif">
-
 * **Description**
     * View the [javadocs](https://curriculeon.github.io/maven.simple-arcade/javadocs/index.html) for the program to become better oriented with its design
       * `https://curriculeon.github.io/maven.simple-arcade/javadocs/index.html`
@@ -15,7 +13,7 @@
         * Ensure the `Arcade` has a selection of at least 2 implementation of `GameInterface`.
         * Ensure all implementation of `PlayerInterface` have reference to a `ArcadeAccount`
         * Ensure there are at least 5 test cases for each game. 
-
+<img src="./arcade.gif">
 
 ## How to Download
 
