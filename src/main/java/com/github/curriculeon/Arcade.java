@@ -15,7 +15,7 @@ import com.github.curriculeon.utils.IOConsole;
  * Created by leon on 7/21/2020.
  */
 public class Arcade implements Runnable {
-    private static final IOConsole console = new IOConsole(AnsiColor.BLUE);
+    private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
     @Override
     public void run() {
