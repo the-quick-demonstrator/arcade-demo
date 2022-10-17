@@ -29,6 +29,17 @@ public class Arcade implements Runnable {
                 ArcadeAccount arcadeAccount = arcadeAccountManager.getAccount(accountName, accountPassword);
                 boolean isValidLogin = arcadeAccount != null;
                 if (isValidLogin) {
+                    String gameSelectionInput = getGameSelectionInput().toUpperCase();
+                    if (gameSelectionInput.equals("SLOTS")) {
+                        play(new SlotsGame(), new SlotsPlayer());
+                    } else if (gameSelectionInput.equals("NUMBERGUESS")) {
+                        play(new NumberGuessGame(), new NumberGuessPlayer(arcadeAccount));
+                    } else {
+                        // TODO - implement better exception handling
+                        String errorMessage = "[ %s ] is an invalid game selection";
+                        throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
+                    }
+                } else {
                     // TODO - implement better exception handling
                     String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
                     throw new RuntimeException(String.format(errorMessage, accountPassword, accountName));
@@ -43,6 +54,11 @@ public class Arcade implements Runnable {
         } while (!"logout".equals(arcadeDashBoardInput));
     }
 
+    private String getArcadeDashboardInput() {
+        return console.getStringInput(new StringBuilder()
+                .append("Welcome to the Arcade Dashboard!")
+                .append("\nFrom here, you can select any of the following options:")
+                .append("\n\t[ create-account ], [ select-game ]")
                 .toString());
     }
 
